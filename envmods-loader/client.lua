@@ -96,8 +96,13 @@ function downloadAllMods()
 	end
 
 	for fileName,_ in pairs(downloadMods) do
-		downloadFile(fileName)
+		if not downloadFile(fileName) then
+			outputDebugString("ABORTING!! Can't download: "..fileName, 1)
+			return false
+		end
 	end
+
+	return true
 end
 
 addEventHandler( "onClientFileDownloadComplete", resourceRoot, 
@@ -121,6 +126,7 @@ end)
 function loadAllMods()
 
 	-- Object replacement mods
+	local rtotal = 0
 	for k,v in pairs(replaceMods) do
 
 		local project, path, mods, enabled = v.project, v.path, v.mods, v.enabled
@@ -140,11 +146,15 @@ function loadAllMods()
 					if downloadMods[txd] == "success" then
 						local txdElement = engineLoadTXD(txd)
 						if txdElement then
+							local worked = false
 							for _,model_id in pairs(modelIDs) do
 								local txdWorked = engineImportTXD(txdElement, model_id)
 								if txdWorked then
-									rcount = rcount + 1
+									worked = true
 								end
+							end
+							if worked then
+								rcount = rcount + 1
 							end
 						end
 					else
@@ -156,11 +166,15 @@ function loadAllMods()
 					if downloadMods[dff] == "success" then
 						local dffElement = engineLoadDFF(dff)
 						if dffElement then
+							local worked = false
 							for _,model_id in pairs(modelIDs) do
 								local dffWorked = engineReplaceModel(dffElement, model_id, alphaTransparency)
 								if dffWorked then
-									rcount = rcount + 1
+									worked = true
 								end
+							end
+							if worked then
+								rcount = rcount + 1
 							end
 						end
 					else
@@ -172,11 +186,15 @@ function loadAllMods()
 					if downloadMods[col] == "success" then
 						local colElement = engineLoadCOL(col)
 						if colElement then
+							local worked = false
 							for _,model_id in pairs(modelIDs) do
 								local colWorked = engineReplaceCOL(colElement, model_id)
 								if colWorked then
-									rcount = rcount + 1
+									worked = true
 								end
+							end
+							if worked then
+								rcount = rcount + 1
 							end
 						end
 					else
@@ -186,6 +204,7 @@ function loadAllMods()
 			end
 
 			print(project, "Loaded "..rcount.." mod files")
+			rtotal = rtotal + rcount
 		end
 	end
 	setTimer(function()
@@ -199,7 +218,7 @@ function loadAllMods()
 
 
 		local timeTook = getTickCount() - loadTime
-		outputChatBox("Env-mods loading finished in "..timeTook.."ms", 0,255,0)
+		outputChatBox("Env-mods loading finished in "..timeTook.."ms | Total "..rtotal.." mod files", 0,255,0)
 
 		-- Clear memory
 		loadTime = nil
@@ -241,7 +260,7 @@ function listReplacementMods()
 
 		local project, path, mods, enabled = v.project, v.path, v.mods, v.enabled
 		if project and path and mods and type(mods)=="table" then
-			outputChatBox(project.." "..(enabled==true and "#00ff00(Enabled)" or "#ffff00(Disabled)").." #ffffff"..table.size(mods).." mod files", 255,194,14, true)
+			outputChatBox(project.." "..(enabled==true and "#00ff00(Enabled)" or "#ffff00(Disabled)").." #ffffff"..table.size(mods).." mods", 255,194,14, true)
 		end
 	end
 end
