@@ -208,15 +208,6 @@ function loadAllMods()
 		end
 	end
 	setTimer(function()
-		for fileName,v in pairs(downloadMods) do
-			if v == "success" then
-				if fileDelete(fileName) then -- remove from cache ;)
-					-- print("Deleted: "..fileName)
-				end
-			end
-		end
-
-
 		local timeTook = getTickCount() - loadTime
 		outputChatBox("Env-mods loading finished in "..timeTook.."ms | Total "..rtotal.." mod files", 0,255,0)
 

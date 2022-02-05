@@ -30,5 +30,4 @@ Se não souber criar ficheiro COL para um modelo com o 3DS Max, pode usar [esta 
 
 - Ao lançar o resource o cliente vai verificar se todos os mods são válidos (se não estiverem enviará uma mensagem de erro para o debugscript 3)
 - Após as verificações iniciais, todos os mods são baixados e de seguida carregados (verá mensagem(s) de erro se algo falhar)
-- No final todos os mods são apagados do cache dos recursos do cliente para evitar roubos
 - Este processo é rápido, você verá o tempo que demorou no chat (pode desativar isto)
