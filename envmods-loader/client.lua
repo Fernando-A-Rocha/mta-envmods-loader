@@ -22,6 +22,7 @@ local errFileName = "errors.log"
 local waitClose, errFile
 local downloadMods = {}
 local downloaded = 0
+local loadTime
 
 function outputError(msg)
 	if errFile then
@@ -196,7 +197,12 @@ function loadAllMods()
 			end
 		end
 
-		-- Clear mem
+
+		local timeTook = getTickCount() - loadTime
+		outputChatBox("Env-mods loading finished in "..timeTook.."ms", 0,255,0)
+
+		-- Clear memory
+		loadTime = nil
 		downloadMods = nil
 		downloaded = nil
 	end, 500, 1)
@@ -205,6 +211,8 @@ end
 
 addEventHandler( "onClientResourceStart", resourceRoot, 
 function()
+
+	loadTime = getTickCount()
 
 	if not startupChecks() then return end
 

@@ -7,7 +7,7 @@ Abaixo: Documentação // Leia-me ou morra
 
 ## Atenção
 
-De momento só está implementado "replacement mods" AKA mods de substituição de modelos e texturas
+De momento só está implementado "replacement mods" (mods de substituição) de modelos (DFF+COL) e texturas (TXD)
 
 No futuro vou permitir **adicionar** objetos ao jogo que poderão ser spawnados via coordenadas pré-definidas
 
@@ -23,3 +23,10 @@ Use [esta ferramenta](https://github.com/Fernando-A-Rocha/mta-ide-search) para e
 - Cada mod tem que ter lista de IDs para aplicar a substituição
 - Os mods TXD têm que ser declarados antes de todos os mods DFF por motivos de script
 - Observe o exemplo presente no ficheiro
+
+## Como funciona
+
+- Ao lançar o resource o cliente vai verificar se todos os mods são válidos (se não estiverem enviará uma mensagem de erro para o debugscript 3)
+- Após as verificações iniciais, todos os mods são baixados e de seguida carregados (verá mensagem(s) de erro se algo falhar)
+- No final todos os mods são apagados do cache dos recursos do cliente para evitar roubos
+- Este processo é rápido, você verá o tempo que demorou no chat (pode desativar isto)
