@@ -13,6 +13,8 @@ No futuro vou permitir **adicionar** objetos ao jogo que poderão ser spawnados 
 
 Use [esta ferramenta](https://github.com/Fernando-A-Rocha/mta-ide-search) para encontrar ID/DFF/TXD dos modelos do jogo facilmente (necessário para declarar os env-mods)
 
+Se não souber criar ficheiro COL para um modelo com o 3DS Max, pode usar [esta ferramenta](https://github.com/Fernando-A-Rocha/mta-samp-maploader/blob/main/TUTORIAL_COL.md) para gerenciar um COL a partir dum DFF
+
 ## Como usar
 
 - Declarar os replacement mods em [rmods.lua](/envmods-loader/rmods.lua)
@@ -22,7 +24,7 @@ Use [esta ferramenta](https://github.com/Fernando-A-Rocha/mta-ide-search) para e
 	- Substituição de TXD
 - Cada mod tem que ter lista de IDs para aplicar a substituição
 - Os mods TXD têm que ser declarados antes de todos os mods DFF por motivos de script
-- Observe o exemplo presente no ficheiro
+- Observe [o exemplo](/example.png) presente no ficheiro
 
 ## Como funciona
 
