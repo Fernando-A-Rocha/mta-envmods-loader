@@ -1,0 +1,18 @@
+<meta>
+    <info author="Fernando" name="mta-envmods-loader" description="resource for loading environment mods (replacement + new)" version="1.0.0" type="script"/>
+
+	<script src="amods.lua" type="client" cache="false"/>
+	<script src="rmods.lua" type="client" cache="false"/>
+	<script src="client.lua" type="client" cache="false"/>
+
+	<!--
+		Mod list for each project
+		download="false" is required for the script to work
+	-->
+
+	<!-- East LS Basketball Court -->
+	<file src="files/eastLSbasket/lae2_ground04.dff" download="false"/>
+	<file src="files/eastLSbasket/lae2_ground04.col" download="false"/>
+	<file src="files/eastLSbasket/landlae2e.txd" download="false"/>
+	<file src="files/eastLSbasket/bskball_standext.txd" download="false"/>
+</meta>
