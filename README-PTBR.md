@@ -15,6 +15,8 @@ Use [esta ferramenta](https://github.com/Fernando-A-Rocha/mta-ide-search) para e
 
 Se não souber criar ficheiro COL para um modelo com o 3DS Max, pode usar [esta ferramenta](https://github.com/Fernando-A-Rocha/mta-samp-maploader/blob/main/TUTORIAL_COL.md) para gerenciar um COL a partir dum DFF
 
+**Este recurso não está finalizado.** Com o funcionamento atual qualquer player pode ainda roubar os ficheiros após serem baixados. O ideal será no futuro carregar ficheiros encriptados (decriptados no momento)
+
 ## Como usar
 
 - Declarar os replacement mods em [rmods.lua](/envmods-loader/rmods.lua)
